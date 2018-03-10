@@ -1,11 +1,14 @@
 {
-  "Register": "注册",
+  "Register": "注 册",
   "Name": "用户名",
-  "E-Mail Address": "邮箱",
+  "E-Mail Address": "邮 箱",
   "Password": "密 码",
   "Confirm Password": "确认密码",
   "Verification Code": "验证码",
   "Click on the image to retrieve the verification code": "点击重新获取验证码",
   "Please enter correct verify code": "请输入正确的验证码",
-  "verification code must be filled": "验证码不能为空"
+  "verification code must be filled": "验证码不能为空",
+  "Login": "登 录",
+  "Remember Me": "记住我",
+  "Forgot Your Password?": "忘记密码？"
 }
