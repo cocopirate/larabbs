@@ -1,0 +1,11 @@
+{
+  "Register": "注册",
+  "Name": "用户名",
+  "E-Mail Address": "邮箱",
+  "Password": "密 码",
+  "Confirm Password": "确认密码",
+  "Verification Code": "验证码",
+  "Click on the image to retrieve the verification code": "点击重新获取验证码",
+  "Please enter correct verify code": "请输入正确的验证码",
+  "verification code must be filled": "验证码不能为空"
+}
