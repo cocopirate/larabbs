@@ -37,6 +37,7 @@
                             {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">编辑资料</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 {{ csrf_field() }}
                                 <button type="submit" class="dropdown-item" href="#">退出登录</button>

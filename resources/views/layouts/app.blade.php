@@ -20,6 +20,7 @@
 
             <div class="container" style="padding-top: 40px;">
 
+                @include('layouts._message')
                 @yield('content')
 
             </div>
