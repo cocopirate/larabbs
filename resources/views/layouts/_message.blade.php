@@ -1,4 +1,4 @@
-@if(Session::has('message'))
+@if(session('message'))
 
     <div class="alert alert-info alert-dismissible fade show" role="alert">
         {{ Session::get('message') }}
@@ -9,7 +9,7 @@
 
 @endif
 
-@if(Session::has('success'))
+@if(session('success'))
 
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ Session::get('success') }}
@@ -20,7 +20,7 @@
 
 @endif
 
-@if(Session::has('danger'))
+@if(session('danger'))
 
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ Session::get('danger') }}
