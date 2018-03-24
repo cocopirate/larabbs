@@ -43,10 +43,20 @@
                             {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">编辑资料</a>
+                            <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">
+                                <span class="oi oi-person"></span>
+                                个人中心
+                            </a>
+                            <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">
+                                <span class="oi oi-file"></span>
+                                编辑资料
+                            </a>
                             <form method="POST" action="{{ route('logout') }}">
                                 {{ csrf_field() }}
-                                <button type="submit" class="dropdown-item" href="#">退出登录</button>
+                                <button type="submit" class="dropdown-item" href="#">
+                                    <span class="oi oi-account-logout"></span>
+                                    退出登录
+                                </button>
                             </form>
                         </div>
                     </li>
