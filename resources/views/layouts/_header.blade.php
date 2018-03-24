@@ -12,14 +12,20 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">社区<span class="sr-only">(current)</span></a>
+                <li class="nav-item {{active_class(if_route('topics.index'))}}">
+                    <a class="nav-link" href="{{ route('topics.index') }}">全部话题<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">文档</a>
+                <li class="nav-item {{ active_class(if_route('categories.show') && if_route_param('category', 1)) }}">
+                    <a class="nav-link" href="{{ route('categories.show', 1) }}">分享</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">问答</a>
+                <li class="nav-item {{ active_class(if_route('categories.show') && if_route_param('category', 2)) }}">
+                    <a class="nav-link" href="{{ route('categories.show', 2) }}">教程</a>
+                </li>
+                <li class="nav-item {{ active_class(if_route('categories.show') && if_route_param('category', 3)) }}">
+                    <a class="nav-link" href="{{ route('categories.show', 3) }}">问答</a>
+                </li>
+                <li class="nav-item {{ active_class(if_route('categories.show') && if_route_param('category', 4)) }}">
+                    <a class="nav-link" href="{{ route('categories.show', 4) }}">公告</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
