@@ -32,9 +32,14 @@
                 <!-- Authentication Links -->
 
                 @guest
-                    <a class="nav-item nav-link" href="{{ route('login') }}">登录</a>
-                    <a class="nav-item nav-link" href="{{ route('register') }}">注册</a>
+                    <li><a class="nav-item nav-link" href="{{ route('login') }}">登录</a></li>
+                    <li><a class="nav-item nav-link" href="{{ route('register') }}">注册</a></li>
                 @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('topics.create') }}">
+                            <span class="oi oi-plus" aria-hidden="true"></span>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="user-avatar float-left" style="margin-right:8px; margin-top:-5px;" >
