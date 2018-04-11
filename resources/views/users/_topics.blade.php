@@ -16,3 +16,6 @@
 @else
     <div>暂无数据</div>
 @endif
+
+{{-- 分页 --}}
+{!! $topics->appends(Request::except('page'))->render() !!}
