@@ -40,6 +40,14 @@
                             <span class="oi oi-plus" aria-hidden="true"></span>
                         </a>
                     </li>
+                    {{-- 消息通知标记 --}}
+                    <li class="nav-item">
+                        <a href="{{ route('notifications.index') }}" class="nav-link">
+                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'danger' : 'secondary' }}">
+                                {{ Auth::user()->notification_count }}
+                            </span>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="user-avatar float-left" style="margin-right:8px; margin-top:-5px;" >
