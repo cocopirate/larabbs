@@ -9,9 +9,17 @@
                     <span class="meta">{{ $reply->created_at->diffForHumans() }}</span>
 
                     {{-- 回复删除按钮 --}}
-                    <span class="meta float-right">
-                        <span class="oi oi-trash" aria-hidden="true"></span>
-                    </span>
+                    @can('destroy', $reply)
+                        <span class="meta float-right">
+                            <form action="{{ route('replies.destroy', $reply->id) }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-light btn-xs">
+                                    <i class="oi oi-trash" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </span>
+                    @endcan
                 </div>
                 <div class="reply-content">
                     {!! $reply->content !!}
