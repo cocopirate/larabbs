@@ -56,6 +56,12 @@
                             {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @can('manage_contents')
+                                <a class="dropdown-item" href="{{ url(config('administrator.uri')) }}">
+                                    <span class="oi oi-dashboard"></span>
+                                    管理后台
+                                </a>
+                            @endcan
                             <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">
                                 <span class="oi oi-person"></span>
                                 个人中心
