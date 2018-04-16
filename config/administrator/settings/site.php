@@ -9,9 +9,9 @@ return [
     'title' => '站点设置',
 
     // 访问权限判断
-    'permissions' => function(){
+    'permission' => function(){
         // 只允许站长管理站点配置
-        return Auth::user()->hasRole('Founder');
+        return Auth::user()->can('edit_settings');
     },
 
     // 站点配置的表单
