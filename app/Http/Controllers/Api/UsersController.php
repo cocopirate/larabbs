@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\UserRequest;
 use App\Transformers\UserTransformer;
@@ -44,6 +45,22 @@ class UsersController extends Controller
                                     'expires_in' => \Auth::guard('api')->factory()->getTTL()*60
                                 ])
                                 ->setStatusCode(201);
+    }
+
+    public function update(UserRequest $request)
+    {
+        $user = $this->user();
+
+        $atrributes = $request->only(['name', 'email', 'introduction']);
+
+        if($request->avatar_image_id){
+            $image = Image::find($request->avatar_image_id);
+
+            $atrributes['avatar'] = $image->path;
+        }
+        $user->update($atrributes);
+
+        return $this->response->item($user, new UserTransformer());
     }
 
     public function me()
