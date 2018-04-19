@@ -19,7 +19,7 @@ class UsersController extends Controller
 
         }
 
-        if(!hash_equals($verifyData['code'], $request->verification_code)){
+        if(!hash_equals($verifyData['sms_code'], $request->verification_code)){
             // 返回401
             return $this->response->errorUnauthorized('验证码错误');
 
