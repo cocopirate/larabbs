@@ -61,6 +61,7 @@ $api->version('v1', [
         'limit' => config('api.rate_limits.access.limit'),
         'expires' => config('api.rate_limits.access.expires'),
     ], function ($api){
+
         // 游客可以访问的接口
 
         // 获取分类列表
@@ -75,9 +76,17 @@ $api->version('v1', [
         $api->get('users/{user}/topics', 'TopicsController@userIndex')
             ->name('api.users.topics.index');
 
+        // 获取某个用户的回复列表
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')
+            ->name('api.users.replies.index');
+
         // 获取话题详情
         $api->get('topics/{topic}', 'TopicsController@show')
             ->name('api.topics.show');
+
+        // 获取话题回复列表
+        $api->get('topics/{topic}/replies', 'RepliesController@index')
+            ->name('api.topics.replies.index');
 
         // 需要 token 验证的接口
 
