@@ -88,6 +88,14 @@ $api->version('v1', [
         $api->get('topics/{topic}/replies', 'RepliesController@index')
             ->name('api.topics.replies.index');
 
+        // 获取资源位推荐
+        $api->get('links', 'LinksController@index')
+            ->name('api.links.index');
+
+        // 获取活跃用户
+        $api->get('activated/users', 'UsersController@activatedIndex')
+            ->name('api.activated.users.index');
+
         // 需要 token 验证的接口
 
         $api->group([
