@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         if (getenv('IS_IN_HEROKU')){
             \URL::forceScheme('https');
         }
-        
+
         Carbon::setLocale('zh');
     }
 
