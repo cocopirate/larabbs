@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
 		\App\Models\Link::observe(\App\Observers\LinkObserver::class);
 
+        if (getenv('IS_IN_HEROKU')){
+            \URL::forceScheme('https');
+        }
+        
         Carbon::setLocale('zh');
     }
 
