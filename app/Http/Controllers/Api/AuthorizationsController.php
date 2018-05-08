@@ -8,13 +8,23 @@ use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Http\Requests\Api\AuthorizationRequest;
 use Auth;
+use League\OAuth2\Server\AuthorizationServer;
+use League\OAuth2\Server\Exception\OAuthServerException;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response as Psr7Response;
 
 
 class AuthorizationsController extends Controller
 {
 
-    public function store(AuthorizationRequest $request)
+    public function store(AuthorizationRequest $originRequest, AuthorizationServer $server, ServerRequestInterface $serverRequest)
     {
+        try{
+            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response)->withStatus(201);
+        } catch (OAuthServerException $e){
+            return $this->response->errorUnauthorized($e->getMessage());
+        }
+        /*
         $username = $request->username;
 
         filter_var($username, FILTER_VALIDATE_EMAIL) ?
@@ -27,6 +37,7 @@ class AuthorizationsController extends Controller
         }
 
         return $this->respondWithToken($token)->setStatusCode(201);
+        */
     }
 
     public function socialStore($type, SocialAuthorizationRequest $request)
@@ -88,17 +99,39 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+
+    public function update(AuthorizationServer $server, ServerRequestInterface $serverRequest)
+    {
+        try{
+            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response);
+        } catch (OAuthServerException $e){
+            return $this->response->errorUnauthorized($e->getMessage());
+        }
+    }
+
+    // 使用JWT刷新 Token
+    /*
     public function update()
     {
         $token = Auth::guard('api')->refresh();
         return $this->respondWithToken($token);
     }
+    */
 
+    public function destroy()
+    {
+        $this->user()->token()->revoke();
+        return $this->response->noContent();
+    }
+
+    // 使用JWT删除 Token
+    /*
     public function destroy()
     {
         Auth::guard('api')->logout();
         return $this->response->noContent();
     }
+    */
 
     public function respondWithToken($token)
     {
