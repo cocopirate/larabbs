@@ -39,7 +39,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password', 'introduction', 'avatar', 'weixin_openid', 'weixin_unionid'
+        'name', 'phone', 'email', 'password', 'introduction', 'avatar', 'weixin_openid', 'weixin_unionid', 'weapp_openid', 'weixin_session_key'
     ];
 
     /**
@@ -96,7 +96,7 @@ class User extends Authenticatable implements JWTSubject
         $this->attributes['avatar'] = $path;
     }
 
-    // 支持手机登录
+    // 检测用户名是邮箱或电话
     public function findForPassport($username)
     {
         filter_var($username, FILTER_VALIDATE_EMAIL) ?
